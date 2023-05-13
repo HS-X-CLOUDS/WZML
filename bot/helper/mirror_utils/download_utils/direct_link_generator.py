@@ -768,23 +768,21 @@ def unified(link) -> str:
         raise DirectDownloadLinkException('ERROR: Drive Link not found')
 
 
-def filepress(url):
-    cget = create_scraper().request
+def filepress(link: str) -> str:
+    cget = cloudscraper.create_scraper().request
     try:
-        url = cget('GET', url).url
-        raw = urlparse(url)
+        raw = urlparse(link)
         json_data = {
             'id': raw.path.split('/')[-1],
             'method': 'publicDownlaod',
-        }
+            }
         api = f'{raw.scheme}://{raw.hostname}/api/file/downlaod/'
-        res = cget('POST', api, headers={
-                   'Referer': f'{raw.scheme}://{raw.hostname}'}, json=json_data).json()
+        res = cget('POST', api, headers={'Referer': f'{raw.scheme}://{raw.netloc}'}, json=json_data).json()
+        if 'data' not in res:
+            raise DirectDownloadLinkException(f'ERROR: {res["statusText"]}')
+        return f'https://drive.google.com/open?id={res["data"]}'
     except Exception as e:
         raise DirectDownloadLinkException(f'ERROR: {e.__class__.__name__}')
-    if 'data' not in res:
-        raise DirectDownloadLinkException(f'ERROR: {res["statusText"]}')
-    return f'https://drive.google.com/uc?id={res["data"]}&export=download'
 
        
 def terabox(url) -> str:
