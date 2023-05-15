@@ -1,4 +1,4 @@
-FROM mrtamilkid/mltb:heroku
+FROM mrxmirrorbotz/mrxmirror:heroku
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
