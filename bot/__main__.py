@@ -594,8 +594,8 @@ def main():
             msg += f"<b>Bot Got Re-Started 🚀</b>\n"
             msg += f"<b>📅 DATE: {date}</b>\n"
             msg += f"<b>⏰ TIME: {time}</b>\n"
-            msg += f"<b>🗺️ TIMEZONE: {timez}</b>\n"
-            msg += f"<b>Please Re-Download Your Tasks 🚶</b>"         
+            msg += f"<b>🗺️ TIMEZONE: {TIMEZONE}</b>\n"
+            msg += f"<b>Please Re-Download Your Tasks 🚶</b>"       
             bot.edit_message_text(msg, chat_id, msg_id)
         except Exception as e:
             LOGGER.info(e)
