@@ -589,6 +589,7 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
+        try:
             msg = f"<b>Every Ends is a New Beginning!</b>\n"
             msg += f"<b>Bot Got Re-Started 🚀</b>\n"
             msg += f"<b>📅 DATE: {date}</b>\n"
@@ -596,14 +597,9 @@ def main():
             msg += f"<b>🗺️ TIMEZONE: {timez}</b>\n"
             msg += f"<b>Please Re-Download Your Tasks 🚶</b>"         
             bot.edit_message_text(msg, chat_id, msg_id)
+        except Exception as e:
+            LOGGER.info(e)
         osremove(".restartmsg")
-    elif not notifier_dict and AUTHORIZED_CHATS:
-        text = f"Every Ends is a New Beginning! \nBot Got Re-Started 🚀 \n📅 DATE: {date} \n⏰ TIME: {time} \n🗺️ TIMEZONE: {TIMEZONE} \nPlease Re-Download Your Tasks 🚶"
-        for id_ in AUTHORIZED_CHATS:
-            try:
-                bot.sendMessage(chat_id=id_, text=text, parse_mode=ParseMode.HTML)
-            except Exception as e:
-                LOGGER.error(e)
 
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
