@@ -590,12 +590,12 @@ def main():
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
         try:
-            msg = f"**Every Ends is a New Beginning!**\n"
-            msg += f"<b>Bot Got Re-Started 🚀</b>\n"
-            msg += f"<b>📅 DATE: {date}</b>\n"
-            msg += f"<b>⏰ TIME: {time}</b>\n"
-            msg += f"<b>🗺️ TIMEZONE: {TIMEZONE}</b>\n"
-            msg += f"<b>Please Re-Download Your Tasks 🚶</b>"       
+            msg = f"Every Ends is a New Beginning!\n"
+            msg += f"Bot Got Re-Started 🚀\n"
+            msg += f"📅 DATE: {date}\n"
+            msg += f"⏰ TIME: {time}\n"
+            msg += f"🗺️ TIMEZONE: {TIMEZONE}\n"
+            msg += f"Please Re-Download Your Tasks 🚶"       
             bot.edit_message_text(msg, chat_id, msg_id)
         except Exception as e:
             LOGGER.info(e)
