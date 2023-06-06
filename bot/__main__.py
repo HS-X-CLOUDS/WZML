@@ -589,8 +589,13 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        msg = f"<b>Every Ends is a New Beginning! </b>\n<b>Bot Got Re-Started 🚀 </b>\n<b>📅 DATE: {date} </b>\n<b>⏰ TIME: {time} </b>\n<b>🗺️ TIMEZONE: {TIMEZONE} </b>\n<b>Please Re-Download Your Tasks 🚶</b>\n"
-        bot.edit_message_text(msg, chat_id, msg_id)
+            msg = f"<b>Every Ends is a New Beginning!</b>\n"
+            msg += f"<b>Bot Got Re-Started 🚀</b>\n"
+            msg += f"<b>📅 DATE: {date}</b>\n"
+            msg += f"<b>⏰ TIME: {time}</b>\n"
+            msg += f"<b>🗺️ TIMEZONE: {timez}</b>\n"
+            msg += f"<b>Please Re-Download Your Tasks 🚶</b>"         
+            bot.edit_message_text(msg, chat_id, msg_id)
         osremove(".restartmsg")
     elif not notifier_dict and AUTHORIZED_CHATS:
         text = f"Every Ends is a New Beginning! \nBot Got Re-Started 🚀 \n📅 DATE: {date} \n⏰ TIME: {time} \n🗺️ TIMEZONE: {TIMEZONE} \nPlease Re-Download Your Tasks 🚶"
