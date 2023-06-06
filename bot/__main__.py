@@ -590,7 +590,7 @@ def main():
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
         try:
-            msg = f"<b>Every Ends is a New Beginning!</b>\n"
+            msg = f"**Every Ends is a New Beginning!**\n"
             msg += f"<b>Bot Got Re-Started 🚀</b>\n"
             msg += f"<b>📅 DATE: {date}</b>\n"
             msg += f"<b>⏰ TIME: {time}</b>\n"
